@@ -4,6 +4,7 @@ import "./App.css";
 // import LoadIcons from "./loadIcons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faBackward, faForward, faPenToSquare, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import Write from "./components/write";
 
 const Dashboard = () => (
   <div className="dashboard-container">
@@ -20,8 +21,7 @@ const Dashboard = () => (
           <button>About Me</button>
         </div>
       </header>
-      <textarea className="response-box" placeholder="Respond here"></textarea>
-      <FontAwesomeIcon icon={faPaperPlane} className="send-icon"/>
+      <textarea className="response-box" placeholder="Respond here"><Write/></textarea>
       <div className="controls">
         <div>
           <button><FontAwesomeIcon icon={faBackward}/></button>
@@ -64,6 +64,7 @@ const Auth = () => (
       <input className="input-field" placeholder="Password" type="password" required/>
       <button className="submit-button">Login</button>
       <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+      <Link to={"/"}>Home</Link>
     </div>
   </div>
 );
@@ -78,6 +79,7 @@ const Signup = () => (
       <input className="input-field" placeholder="Password" type="password" required/>
       <button className="submit-button">Sign Up</button>
       <p>Already have an account? <Link to="/login">Login</Link></p>
+      <Link to={"/"}>Home</Link>
     </div>
   </div>
 );
