@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 // import LoadIcons from "./loadIcons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faBackward, faForward, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faBackward, faForward, faPenToSquare, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 const Dashboard = () => (
   <div className="dashboard-container">
@@ -21,6 +21,7 @@ const Dashboard = () => (
         </div>
       </header>
       <textarea className="response-box" placeholder="Respond here"></textarea>
+      <FontAwesomeIcon icon={faPaperPlane} className="send-icon"/>
       <div className="controls">
         <div>
           <button><FontAwesomeIcon icon={faBackward}/></button>
@@ -40,7 +41,12 @@ const Welcome = () => (
   <div className="welcome-container">
     <h1>Welcome to HypeMan</h1>
     <p>Fuel Your Mind. Elevate Your Spirit. Own Your Moment.</p>
-    <input className="search-bar" placeholder="How Are You Feeling Today?" />
+
+    <div className="text-input">
+      <input className="search-bar" placeholder="How Are You Feeling Today?" />
+      <button className="submit-button"><FontAwesomeIcon icon={faPaperPlane}/></button>
+    </div>
+    
     <div className="tags">
       {["Imposter Syndrome", "Anxiety", "Validation", "Motivation"].map((tag) => (
         <span key={tag} className="tag">{tag} ❌</span>
