@@ -5,6 +5,8 @@ import "./App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faBackward, faForward, faPenToSquare, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import Write from "./components/write";
+import LogIn from "./components/logIn";
+import SignUp from "./components/signUp";
 
 const Dashboard = () => (
   <div className="dashboard-container">
@@ -37,52 +39,33 @@ const Dashboard = () => (
   </div>
 );
 
-const Welcome = () => (
-  <div className="welcome-container">
-    <h1>Welcome to HypeMan</h1>
-    <p>Fuel Your Mind. Elevate Your Spirit. Own Your Moment.</p>
+const Welcome = () => {
+  const handleTagClick = (tag) => {
+    // Assuming GenerateComponent is a function that handles the prompt
+    GenerateComponent(tag);
+  };
 
-    <div className="text-input">
-      <input className="search-bar" placeholder="How Are You Feeling Today?" />
-      <button className="submit-button"><FontAwesomeIcon icon={faPaperPlane}/></button>
-    </div>
-    
-    <div className="tags">
-      {["Imposter Syndrome", "Anxiety", "Validation", "Motivation"].map((tag) => (
-        <span key={tag} className="tag">{tag} ❌</span>
-      ))}
-    </div>
-    <Link to="/login" className="cta-button">Sign Up/Login</Link>
-  </div>
-);
+  return (
+    <div className="welcome-container">
+      <h1>Welcome to HypeMan</h1>
+      <p>Fuel Your Mind. Elevate Your Spirit. Own Your Moment.</p>
 
-const Auth = () => (
-  <div className="auth-container">
-    <div className="auth-box">
-      <h2>Login</h2>
-      <input className="input-field" placeholder="Email" required/>
-      <input className="input-field" placeholder="Password" type="password" required/>
-      <button className="submit-button">Login</button>
-      <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
-      <Link to={"/"}>Home</Link>
+      <div className="text-input">
+        <input className="search-bar" placeholder="How Are You Feeling Today?" />
+        <button className="submit-button"><FontAwesomeIcon icon={faPaperPlane}/></button>
+      </div>
+      
+      <div className="tags">
+        {["Imposter Syndrome", "Anxiety", "Validation", "Motivation"].map((tag) => (
+          <span key={tag} className="tag" onClick={() => handleTagClick(tag)}>{tag} ❌</span>
+        ))}
+      </div>
+      <Link to="/login" className="cta-button">Sign Up/Login</Link>
     </div>
-  </div>
-);
+  );
+};
 
-const Signup = () => (
-  <div className="auth-container">
-    <div className="auth-box">
-      <h2>Sign Up</h2>
-      <input className="input-field" placeholder="First Name" required/>
-      <input className="input-field" placeholder="Last Name" required/>
-      <input className="input-field" placeholder="Email" required/>
-      <input className="input-field" placeholder="Password" type="password" required/>
-      <button className="submit-button">Sign Up</button>
-      <p>Already have an account? <Link to="/login">Login</Link></p>
-      <Link to={"/"}>Home</Link>
-    </div>
-  </div>
-);
+
 
 function App() {
   return (
@@ -90,8 +73,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<Auth />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
   );

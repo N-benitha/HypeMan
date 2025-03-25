@@ -11,7 +11,7 @@ function read() {
     const fetchData = async () => {
     try {
       const db = getDatabase(app);
-      const dbRef = ref(db, 'responses');
+      const dbRef = ref(db, 'questions');
       const snapshot = await get(dbRef);
       const result = snapshot.docs.map(doc => doc.data());
       setData(result);
